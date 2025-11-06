@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cat & Rocket — Mini Game</title>
+<style>
+  html,body{margin:0;height:100%;background:#f5f7fb;font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif}
+  .wrap{max-width:900px;margin:0 auto;padding:12px 16px}
+  header{display:flex;justify-content:space-between;align-items:center}
+  a{color:#0f4c81;text-decoration:none} a:hover{text-decoration:underline}
+  canvas{display:block;margin:12px auto;border:2px solid #d4d7e0;border-radius:12px;background:#ffffff}
+  .tips{color:#333}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Cat & Rocket — Mini Game</h1>
+    <a href="../#games">← Back</a>
+  </header>
+  <p class="tips">Move with ◀ ▶ (or A/D). Avoid falling rockets. Survive as long as possible!</p>
+  <canvas id="game" width="720" height="420"></canvas>
+</div>
+<script>
+const c = document.getElementById('game');
+const ctx = c.getContext('2d');
+const W=c.width, H=c.height;
+let running=true, time=0, score=0, best=0;
+let cat={x:W/2, y:H-40, vx:0, speed:5, w:28, h:18};
+let rockets=[];
+function spawn(){ const r={x:Math.random()*(W-20)+10, y:-20, vy:2+Math.random()*2, w:10, h:24}; rockets.push(r); }
+function input(e){
+  if(e.type==='keydown'){ if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A') cat.vx=-cat.speed; if(e.key==='ArrowRight'||e.key==='d'||e.key==='D') cat.vx=cat.speed; }
+  else{ if((e.key==='ArrowLeft'||e.key==='a'||e.key==='A') && cat.vx<0) cat.vx=0; if((e.key==='ArrowRight'||e.key==='d'||e.key==='D') && cat.vx>0) cat.vx=0; }
+}
+window.addEventListener('keydown',input); window.addEventListener('keyup',input);
+function drawCat(x,y){ ctx.fillStyle='#111'; ctx.fillRect(x-14,y-9,28,18); ctx.fillRect(x-20,y-10,10,10); ctx.fillRect(x+10,y-10,10,10); ctx.fillStyle='#fff'; ctx.fillRect(x-10,y-4,20,8); ctx.fillStyle='#111'; ctx.fillRect(x-6,y-2,3,3); ctx.fillRect(x+3,y-2,3,3); }
+function drawRocket(r){ ctx.fillStyle='#e11d48'; ctx.fillRect(r.x-5,r.y,10,16); ctx.fillStyle='#94a3b8'; ctx.fillRect(r.x-3,r.y+4,6,6); ctx.fillStyle='#e11d48'; ctx.beginPath(); ctx.moveTo(r.x-5,r.y); ctx.lineTo(r.x+5,r.y); ctx.lineTo(r.x, r.y-8); ctx.closePath(); ctx.fill(); }
+function collide(a,b){ return Math.abs(a.x-b.x) < (a.w/2 + b.w/2) && Math.abs(a.y-b.y) < (a.h/2 + b.h/2); }
+function step(){ if(!running) return; time+=1; if(time%50===0) spawn(); ctx.clearRect(0,0,W,H);
+  cat.x+=cat.vx; cat.x=Math.max(20, Math.min(W-20, cat.x)); drawCat(cat.x,cat.y);
+  for(let i=0;i<rockets.length;i++){ const r=rockets[i]; r.y+=r.vy; r.vy+=0.002; drawRocket(r); }
+  rockets = rockets.filter(r=>r.y < H+50);
+  for(const r of rockets){ if(collide({x:cat.x,y:cat.y,w:cat.w,h:cat.h},{x:r.x,y:r.y,w:r.w,h:r.h})){ running=false; best=Math.max(best, Math.floor(score)); } }
+  score += 0.05; ctx.fillStyle='#0f4c81'; ctx.font='16px system-ui, sans-serif'; ctx.fillText('Score: '+Math.floor(score), 12, 24); ctx.fillText('Best: '+Math.floor(best), 12, 44);
+  if(running) requestAnimationFrame(step); else{ ctx.fillStyle='rgba(255,0,0,0.08)'; ctx.fillRect(0,0,W,H); ctx.fillStyle='#111'; ctx.font='28px system-ui, sans-serif'; ctx.fillText('Game Over — press R to retry', 170, H/2); }
+}
+requestAnimationFrame(step);
+window.addEventListener('keydown', e=>{ if(!running && (e.key==='r'||e.key==='R')){ running=true; time=0; score=0; rockets=[]; requestAnimationFrame(step); } });
+</script>
+</body>
+</html>

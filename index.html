@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mostafa Alabdallah · מוסטפא אלעבדאללה — Portfolio</title>
+<meta name="description" content="Mostafa Alabdallah (מוסטפא אלעבדאללה): robotics teacher & mechanical engineering student. Projects, gallery, library, videos, and contact.">
+<meta name="keywords" content="Mostafa Alabdallah, Mustafa Alabdallah, מוסטפא אלעבדאללה, Robotics, Teacher, Arduino, Israel, Education">
+<link rel="canonical" href="https://mustafa-alabdallah.github.io/mustafa_alabdallah.github.io/">
+<meta name="theme-color" content="#0f4c81">
+<link rel="icon" href="assets/cat-bg.png">
+<style>
+  :root{ --text:#111827; --muted:#374151; --ring:#d4d7e0; --accent:#0f4c81; --pill:#eef2ff; }
+  *{box-sizing:border-box} html,body{margin:0;height:100%}
+  body{
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Arial, sans-serif;
+    color:var(--text);
+    background: url('assets/cat-bg.png') center top / 640px no-repeat fixed, linear-gradient(180deg,#ffffff,#f5f7fb);
+    min-height:100%;
+  }
+  .parallax { position:fixed; inset:0; pointer-events:none; background:
+    radial-gradient(800px 400px at 80% -10%, rgba(15,76,129,.07), transparent 60%),
+    radial-gradient(1000px 700px at -10% 120%, rgba(79,70,229,.06), transparent 60%);
+    will-change: transform; z-index:0; }
+  .container{position:relative; z-index:1; max-width:1100px; margin:0 auto; padding:20px;}
+  header{display:flex; gap:16px; align-items:center; justify-content:space-between; padding:10px 0;}
+  .brand{display:flex; align-items:center; gap:12px}
+  .brand img{width:58px;height:58px; border-radius:14px; border:1px solid var(--ring); object-fit:cover;}
+  .brand h1{margin:0; font-size:1.15rem; line-height:1.1}
+  .brand p{margin:2px 0 0; color:var(--muted); font-size:.95rem}
+  nav{display:flex; gap:10px; flex-wrap:wrap}
+  nav a{padding:10px 14px; border-radius:999px; background:#eef2ff; border:1px solid var(--ring); color:#0f172a; text-decoration:none; font-weight:700}
+  nav a.active{outline:2px solid var(--accent)}
+  .layout{display:grid; grid-template-columns:1fr; gap:16px}
+  @media(min-width:980px){ .layout{ grid-template-columns: 3fr 1fr; } }
+  .card{background:#ffffff; border:1px solid var(--ring); border-radius:16px; padding:16px; color:#111}
+  .grid{display:grid; gap:14px}
+  .cols-3{grid-template-columns:repeat(3,1fr)}
+  .cols-2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:780px){ .cols-3{grid-template-columns:1fr} .cols-2{grid-template-columns:1fr} }
+  .thumb{border-radius:12px; border:1px solid var(--ring); width:100%; aspect-ratio:4/3; object-fit:cover}
+  .portrait{position:sticky; top:14px}
+  .portrait img{width:100%; border-radius:18px; border:1px solid var(--ring); box-shadow:0 10px 40px rgba(0,0,0,.08);}
+  .downloads a{display:flex; justify-content:space-between; align-items:center; padding:12px; border-radius:12px; border:1px solid var(--ring); background:#f9fafb; color:#0f172a; text-decoration:none}
+  .downloads small{color:#6b7280}
+  footer{margin:30px 0 10px; color:#6b7280; font-size:.9rem; display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between}
+  .pill{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:#f3f4f6; border:1px solid var(--ring); color:#111; font-size:.85rem; margin:4px 6px 0 0}
+  .hide{display:none}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph":[
+    {
+      "@type":"Person",
+      "name":"Mostafa Alabdallah",
+      "alternateName":["מוסטפא אלעבדאללה","Mustafa Alabdallah"],
+      "jobTitle":"Robotics Teacher & Mechanical Engineering Student",
+      "url":"https://mustafa-alabdallah.github.io/mustafa_alabdallah.github.io/",
+      "sameAs":[
+        "https://github.com/mustafa-alabdallah",
+        "https://www.linkedin.com/in/mostafa-alabdallah-142693269"
+      ]
+    },
+    {
+      "@type":"WebSite",
+      "url":"https://mustafa-alabdallah.github.io/mustafa_alabdallah.github.io/",
+      "name":"Mostafa Alabdallah — Portfolio",
+      "inLanguage":"en"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="parallax" id="fx"></div>
+<div class="container">
+  <header>
+    <div class="brand">
+      <img src="assets/portrait.jpg" alt="Mostafa portrait">
+      <div>
+        <h1>Mostafa Alabdallah · <span lang="he">מוסטפא אלעבדאללה</span></h1>
+        <p>Robotics • Education • Maker • C#/JS • Arduino • VR</p>
+      </div>
+    </div>
+    <nav id="tabs">
+      <a href="#home" class="active">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#library">Library</a>
+      <a href="#games">Games</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <main>
+      <!-- HOME -->
+      <section id="home" class="card">
+        <h2>From classroom to lab — building ideas that move.</h2>
+        <p>I teach robotics in Israeli schools and study Mechanical Engineering (Robotics). Welcome to my central hub: photos, downloads, quick clips, and links.</p>
+        <div class="grid cols-3" style="margin-top:8px">
+          <div class="card">
+            <h3>Highlights</h3>
+            <span class="pill">500+ students</span>
+            <span class="pill">6+ schools</span>
+            <span class="pill">Arduino • ESP32</span>
+            <span class="pill">3D printing</span>
+            <span class="pill">VR + Robots</span>
+          </div>
+          <div class="card">
+            <h3>Quick Downloads</h3>
+            <div class="downloads">
+              <a href="docs/Robotics_Journey_Book.pdf" download>
+                <div><strong>Robotics Journey — Book (PDF)</strong><div><small>Free to share</small></div></div><span>⤓</span>
+              </a>
+              <a href="docs/Mostafa_Alabdallah_CV.docx" download>
+                <div><strong>Curriculum Vitae (DOCX)</strong><div><small>Latest version</small></div></div><span>⤓</span>
+              </a>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Videos</h3>
+            <p>Short clips from class & projects:</p>
+            <div class="grid cols-2">
+              <video src="videos/clip-1.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--ring)"></video>
+              <video src="videos/clip-2.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--ring)"></video>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid cols-3" style="margin-top:12px">
+          <div class="card">
+            <h3>About me</h3>
+            <p>Mechanical engineering student (robotics) and multi‑school robotics teacher. I mentor teachers, run class projects like hydroponics, RC tanks, and VR demos, and publish lesson materials openly.</p>
+            <p><strong>Skills:</strong> Arduino, ESP32, C#, Python, JS, 3D printing, App Inventor, Git/GitHub, classroom management.</p>
+          </div>
+          <div class="card">
+            <h3>Achievements</h3>
+            <ul>
+              <li>Guided 500+ students across Israel in hands‑on robotics.</li>
+              <li>Built a sea‑trash collector with students as a community project.</li>
+              <li>Authored <em>Robotics Journey</em> (free PDF download).</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Links</h3>
+            <p><a href="https://www.tinkercad.com/dashboard/designs/all" target="_blank">My Tinkercad designs →</a></p>
+            <p><a href="https://github.com/mustafa-alabdallah" target="_blank">GitHub profile →</a></p>
+            <p><a href="https://www.linkedin.com/in/mostafa-alabdallah-142693269" target="_blank">LinkedIn →</a></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALLERY -->
+      <section id="gallery" class="card hide">
+        <h2>Gallery</h2>
+        <div class="grid cols-3">
+          <img class="thumb" src="gallery/gallery-1.jpg" alt="Class group photo 1">
+          <img class="thumb" src="gallery/gallery-2.jpg" alt="Class group photo 2">
+        </div>
+        <div style="margin-top:12px" class="grid cols-2">
+          <video src="videos/clip-3.mp4" controls preload="metadata" style="width:100%; border-radius:12px; border:1px solid var(--ring)"></video>
+        </div>
+      </section>
+
+      <!-- LIBRARY -->
+      <section id="library" class="card hide">
+        <h2>Library</h2>
+        <p>Notebooks, slides, and downloads.</p>
+        <div class="downloads">
+          <a href="docs/Robotics_Journey_Book.pdf" download>
+            <div><strong>Robotics Journey — Book (PDF)</strong><div><small>Public download</small></div></div><span>⤓</span>
+          </a>
+          <a href="docs/Mostafa_Alabdallah_CV.docx" download>
+            <div><strong>Curriculum Vitae (DOCX)</strong><div><small>Hebrew CV</small></div></div><span>⤓</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- GAMES -->
+      <section id="games" class="card hide">
+        <h2>Games</h2>
+        <p>Try my tiny browser game built in pure HTML/JS (no libraries):</p>
+        <p><a href="game/index.html" target="_blank" style="font-weight:700;color:#0f4c81">Play Cat & Rocket →</a></p>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="card hide">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:masmer570@gmail.com">masmer570@gmail.com</a></p>
+        <p>Location: Jaffa, Tel Aviv • Languages: Arabic, Hebrew, English, German</p>
+        <p>Profiles: <a href="https://github.com/mustafa-alabdallah" target="_blank">GitHub</a> · <a href="https://www.linkedin.com/in/mostafa-alabdallah-142693269" target="_blank">LinkedIn</a> · <a href="https://www.tinkercad.com/dashboard/designs/all" target="_blank">Tinkercad</a></p>
+      </section>
+    </main>
+
+    <aside class="portrait">
+      <img src="assets/portrait.jpg" alt="Portrait">
+      <div class="card" style="margin-top:12px">
+        <h3>Now</h3>
+        <p>Teaching robotics, mentoring new teachers, and writing “Robotics Journey”.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <span>© <span id="year"></span> Mostafa Alabdallah</span>
+    <span>Made with pure HTML/CSS/JS. Hosted free on GitHub Pages.</span>
+  </footer>
+</div>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Tabs SPA
+  const tabs = document.querySelectorAll('nav a');
+  const sections = Array.from(document.querySelectorAll('main > section'));
+  function show(hash){
+    if(!hash) hash = '#home';
+    tabs.forEach(a => a.classList.toggle('active', a.getAttribute('href')===hash));
+    sections.forEach(s => s.classList.toggle('hide', '#'+s.id !== hash));
+    history.replaceState(null, '', hash);
+  }
+  window.addEventListener('hashchange', () => show(location.hash));
+  show(location.hash);
+
+  // Parallax sparkle layer (subtle movement)
+  const fx = document.getElementById('fx');
+  window.addEventListener('scroll', ()=>{
+    const y = window.scrollY||0;
+    fx.style.transform = 'translate3d(' + (y*0.03) + 'px,' + (y*0.015) + 'px,0)';
+    document.body.style.backgroundPosition = '0px ' + (y*0.12) + 'px, center';
+  }, {passive:true});
+</script>
+</body>
+</html>
