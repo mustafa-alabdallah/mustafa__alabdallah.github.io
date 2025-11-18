@@ -6,18 +6,123 @@
 <title>Mostafa Alabdallah · מוסטפא אלעבדאללה — Portfolio</title>
 <meta name="description" content="Mostafa Alabdallah (מוסטפא אלעבדאללה): robotics teacher & mechanical engineering student. Projects, gallery, library, videos, and contact.">
 <meta name="keywords" content="Mostafa Alabdallah, Mustafa Alabdallah, מוסטפא אלעבדאללה, Robotics, Teacher, Arduino, Israel, Education">
-<link rel="canonical" href="https://mustafa-alabdallah.github.io/mustafa_alabdallah.github.io/">
+<link rel="canonical" href="https://mustafa-alabdallah.github.io/">
 <meta name="theme-color" content="#0f4c81">
 <link rel="icon" href="assets/cat-bg.png">
 <style>
   :root{ --text:#111827; --muted:#374151; --ring:#d4d7e0; --accent:#0f4c81; --pill:#eef2ff; }
   *{box-sizing:border-box} html,body{margin:0;height:100%}
-  body{
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Arial, sans-serif;
-    color:var(--text);
-    background: url('assets/cat-bg.png') center top / 640px no-repeat fixed, linear-gradient(180deg,#ffffff,#f5f7fb);
-    min-height:100%;
+ body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #e5e7eb;
+  background: radial-gradient(circle at top, #020617 0, #000 60%);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Optional: cat image softly in the back */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("img/cat-bg.jpg"); /* change path if needed */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16; /* control how visible the cat is */
+  filter: blur(1px);
+  z-index: -2;
+}
+/* Moving gradient layer */
+body::after {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  background: radial-gradient(circle at 0% 0%, rgba(234,179,8,0.12), transparent 55%),
+              radial-gradient(circle at 100% 100%, rgba(56,189,248,0.2), transparent 55%);
+  opacity: 0.9;
+  mix-blend-mode: screen;
+  animation: bgFloat 20s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes bgFloat {
+  0% {
+    transform: translate3d(-30px, 0, 0) scale(1);
   }
+  50% {
+    transform: translate3d(50px, 20px, 0) scale(1.1);
+  }
+  100% {
+    transform: translate3d(-40px, -30px, 0) scale(1.05);
+  }
+}
+.section-card {
+  border-radius: 18px;
+  padding: 1.1rem 1.2rem;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(14px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.section-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.95);
+  border-color: rgba(250, 204, 21, 0.75);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.1rem;
+}
+
+.lib-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  background: rgba(15, 23, 42, 0.9);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.lib-pill:hover {
+  background: rgba(250, 204, 21, 0.15);
+  border-color: rgba(250, 204, 21, 0.85);
+  transform: translateY(-1px);
+}
+
+.float-soft {
+  animation: floatSoft 6s ease-in-out infinite;
+}
+
+@keyframes floatSoft {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
   .parallax { position:fixed; inset:0; pointer-events:none; background:
     radial-gradient(800px 400px at 80% -10%, rgba(15,76,129,.07), transparent 60%),
     radial-gradient(1000px 700px at -10% 120%, rgba(79,70,229,.06), transparent 60%);
@@ -38,7 +143,22 @@
   .cols-3{grid-template-columns:repeat(3,1fr)}
   .cols-2{grid-template-columns:repeat(2,1fr)}
   @media(max-width:780px){ .cols-3{grid-template-columns:1fr} .cols-2{grid-template-columns:1fr} }
-  .thumb{border-radius:12px; border:1px solid var(--ring); width:100%; aspect-ratio:4/3; object-fit:cover}
+.thumb {
+  border-radius:12px;
+  border:1px solid var(--ring);
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.thumb:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.65);
+  border-color: rgba(250, 204, 21, 0.85);
+}
+
+
   .portrait{position:sticky; top:14px}
   .portrait img{width:100%; border-radius:18px; border:1px solid var(--ring); box-shadow:0 10px 40px rgba(0,0,0,.08);}
   .downloads a{display:flex; justify-content:space-between; align-items:center; padding:12px; border-radius:12px; border:1px solid var(--ring); background:#f9fafb; color:#0f172a; text-decoration:none}
@@ -89,12 +209,13 @@
       </div>
     </div>
     <nav id="tabs">
-      <a href="#home" class="active">Home</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#library">Library</a>
-      <a href="#games">Games</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <a href="#home" class="active">Home</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#library">Library</a>
+  <a href="#games">Games</a>
+  <a href="#bucket-list">Bucket List</a>
+  <a href="#contact">Contact</a>
+</nav>
   </header>
 
   <div class="layout">
@@ -168,27 +289,253 @@
         </div>
       </section>
 
-      <!-- LIBRARY -->
-      <section id="library" class="card hide">
-        <h2>Library</h2>
-        <p>Notebooks, slides, and downloads.</p>
-        <div class="downloads">
-          <a href="docs/Robotics_Journey_Book.pdf" download>
-            <div><strong>Robotics Journey — Book (PDF)</strong><div><small>Public download</small></div></div><span>⤓</span>
-          </a>
-          <a href="docs/Mostafa_Alabdallah_CV.docx" download>
-            <div><strong>Curriculum Vitae (DOCX)</strong><div><small>Hebrew CV</small></div></div><span>⤓</span>
-          </a>
+     <!-- LIBRARY -->
+<section id="library" class="card hide">
+  <h2>Library</h2>
+  <p class="subtitle" style="margin-top:0.3rem; opacity:0.85;">
+    A living archive of what I’ve learned: certifications, notebooks, downloads and experiments.
+  </p>
+
+  <!-- Mini “tabs” inside Library -->
+  <nav style="display:flex; flex-wrap:wrap; gap:0.5rem; margin: 1.1rem 0 1.4rem;">
+    <a href="#hall-of-fame" class="lib-pill">Hall of Fame</a>
+    <a href="#notebooks" class="lib-pill">Notebooks</a>
+    <a href="#downloads" class="lib-pill">Downloads</a>
+    <a href="#courses" class="lib-pill">Courses & Resources</a>
+    <a href="#experiments" class="lib-pill">Experiments</a>
+  </nav>
+
+  <!-- HALL OF FAME -->
+  <section id="hall-of-fame" class="reveal" style="margin-bottom: 2rem;">
+    <h3 style="font-size: 1.3rem; margin-bottom: 0.4rem;">🏆 Hall of Fame</h3>
+    <p style="margin: 0 0 1rem; opacity: 0.85; font-size: 0.9rem;">
+      A wall of certifications and milestones I’m proud of. Click to zoom or open the full document.
+    </p>
+
+    <div class="section-grid">
+      <!-- Example certificate card 1 -->
+      <article class="section-card float-soft">
+        <div style="border-radius: 12px; overflow: hidden; margin-bottom: 0.6rem; background:#020617;">
+          <img src="img/certs/ccna.png" alt="CCNA Certificate" style="width: 100%; display:block;">
         </div>
-      </section>
+        <h4 style="margin: 0 0 0.25rem; font-size: 1rem;">CCNA – Cisco Certified Network Associate</h4>
+        <p style="margin: 0 0 0.3rem; font-size: 0.85rem; opacity: 0.9;">
+          Networking fundamentals I use in my teaching, projects and everyday debugging.
+        </p>
+        <p style="margin: 0; font-size: 0.8rem; opacity: 0.7;">
+          Year: 20XX · Click image for full size.
+        </p>
+      </article>
+
+      <!-- Example certificate card 2 -->
+      <article class="section-card float-soft">
+        <div style="border-radius: 12px; overflow: hidden; margin-bottom: 0.6rem; background:#020617;">
+          <img src="img/certs/robotics-teacher.png" alt="Robotics Instructor Award" style="width: 100%; display:block;">
+        </div>
+        <h4 style="margin: 0 0 0.25rem; font-size: 1rem;">Outstanding Robotics Instructor</h4>
+        <p style="margin: 0 0 0.3rem; font-size: 0.85rem; opacity: 0.9;">
+          Recognition for my work teaching robotics and mentoring kids in multiple schools.
+        </p>
+        <p style="margin: 0; font-size: 0.8rem; opacity: 0.7;">
+          Year: 20XX · Awarded by: [Organization].
+        </p>
+      </article>
+
+      <!-- Example certificate card 3 -->
+      <article class="section-card float-soft">
+        <div style="border-radius: 12px; overflow: hidden; margin-bottom: 0.6rem; background:#020617;">
+          <img src="img/certs/teaching-excellence.png" alt="Teaching Excellence Certificate" style="width: 100%; display:block;">
+        </div>
+        <h4 style="margin: 0 0 0.25rem; font-size: 1rem;">Teaching Excellence</h4>
+        <p style="margin: 0 0 0.3rem; font-size: 0.85rem; opacity: 0.9;">
+          For my work in Afeka, Moona, “אכפת בלילה” and other programs – mixing heart, discipline and fun.
+        </p>
+        <p style="margin: 0; font-size: 0.8rem; opacity: 0.7;">
+          Year: 20XX · One of my favorite milestones.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- NOTEBOOKS -->
+  <section id="notebooks" class="reveal" style="margin-bottom: 2rem;">
+    <h3 style="font-size: 1.3rem; margin-bottom: 0.4rem;">📓 Notebooks</h3>
+    <p style="margin: 0 0 1rem; opacity: 0.85; font-size: 0.9rem;">
+      Handwritten chaos that turned into order. These notebooks are where most of my explanations are born.
+    </p>
+
+    <div class="section-grid">
+      <article class="section-card float-soft">
+        <h4 style="margin-top: 0; font-size: 1.05rem;">Thermodynamics & Heat Transfer</h4>
+        <p style="margin: 0.35rem 0 0.3rem; font-size: 0.9rem; opacity: 0.9;">
+          Personal explanations, example problems and “Mustafa way” solutions.
+        </p>
+        <p style="margin: 0 0 0.5rem; font-size: 0.8rem; opacity: 0.7;">
+          Format: PDF · Languages: English & Hebrew
+        </p>
+        <a href="notebooks/thermo.pdf" style="font-size: 0.85rem; text-decoration:none; color:#facc15;">
+          ↗ Open notebook
+        </a>
+      </article>
+
+      <article class="section-card float-soft">
+        <h4 style="margin-top: 0; font-size: 1.05rem;">Robotics Teaching Notebook</h4>
+        <p style="margin: 0.35rem 0 0.3rem; font-size: 0.9rem; opacity: 0.9;">
+          Lesson plans, robot sketches, troubleshooting notes and student ideas.
+        </p>
+        <p style="margin: 0 0 0.5rem; font-size: 0.8rem; opacity: 0.7;">
+          Format: PDF / OneNote
+        </p>
+        <a href="notebooks/robotics.pdf" style="font-size: 0.85rem; text-decoration:none; color:#facc15;">
+          ↗ Open notebook
+        </a>
+      </article>
+
+      <article class="section-card float-soft">
+        <h4 style="margin-top: 0; font-size: 1.05rem;">Chess Teaching Notes</h4>
+        <p style="margin: 0.35rem 0 0.3rem; font-size: 0.9rem; opacity: 0.9;">
+          Openings, typical mistakes and how to explain them to a 7-year-old at 8am.
+        </p>
+        <p style="margin: 0 0 0.5rem; font-size: 0.8rem; opacity: 0.7;">
+          Format: PDF / images
+        </p>
+        <a href="notebooks/chess.pdf" style="font-size: 0.85rem; text-decoration:none; color:#facc15;">
+          ↗ Open notebook
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- DOWNLOADS (your original block, wrapped nicely) -->
+  <section id="downloads" class="reveal" style="margin-bottom: 2rem;">
+    <h3 style="font-size: 1.3rem; margin-bottom: 0.4rem;">⬇️ Downloads</h3>
+    <p style="margin: 0 0 0.9rem; opacity: 0.85; font-size: 0.9rem;">
+      Public files you can use or share.
+    </p>
+
+    <div class="downloads">
+      <a href="docs/Robotics_Journey_Book.pdf" download>
+        <div>
+          <strong>Robotics Journey — Book (PDF)</strong>
+          <div><small>Public download</small></div>
+        </div>
+        <span>⤓</span>
+      </a>
+      <a href="docs/Mostafa_Alabdallah_CV.docx" download>
+        <div>
+          <strong>Curriculum Vitae (DOCX)</strong>
+          <div><small>Hebrew CV</small></div>
+        </div>
+        <span>⤓</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- COURSES & RESOURCES -->
+  <section id="courses" class="reveal" style="margin-bottom: 2rem;">
+    <h3 style="font-size: 1.3rem; margin-bottom: 0.4rem;">📚 Courses & Favorite Resources</h3>
+    <div class="section-grid">
+      <article class="section-card">
+        <h4 style="margin-top:0; font-size:1.05rem;">Mechanical Engineering · Afeka</h4>
+        <p style="margin:0.35rem 0 0.3rem; font-size:0.9rem; opacity:0.9;">
+          Selected notes, summaries and cheat sheets from courses like Thermodynamics, Linear Systems
+          and Strength of Materials.
+        </p>
+        <p style="margin: 0; font-size:0.8rem; opacity:0.7;">
+          Soon: links to public-safe versions of my summaries.
+        </p>
+      </article>
+
+      <article class="section-card">
+        <h4 style="margin-top:0; font-size:1.05rem;">Robotics & Arduino Resources</h4>
+        <p style="margin:0.35rem 0 0.3rem; font-size:0.9rem; opacity:0.9;">
+          Links and references I use when teaching or building new projects.
+        </p>
+        <ul style="margin:0.3rem 0 0; padding-left:1.1rem; font-size:0.85rem; opacity:0.85;">
+          <li>Basic Arduino reference</li>
+          <li>MIT App Inventor docs</li>
+          <li>Example RC car / tank code</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- EXPERIMENTS -->
+  <section id="experiments" class="reveal" style="margin-bottom: 0.5rem;">
+    <h3 style="font-size: 1.3rem; margin-bottom: 0.4rem;">🧪 Experiments</h3>
+    <p style="margin: 0 0 0.9rem; opacity: 0.85; font-size: 0.9rem;">
+      Random things I tried – websites, mini games, physics demos. Some are brilliant, some are chaos,
+      all of them taught me something.
+    </p>
+    <div class="section-card">
+      <p style="margin:0; font-size:0.9rem; opacity:0.9;">
+        Soon this section will link to my prototype zone: VR robots, water-pouring arms, JS experiments
+        and more.
+      </p>
+    </div>
+  </section>
+</section>
+
 
       <!-- GAMES -->
       <section id="games" class="card hide">
         <h2>Games</h2>
         <p>Try my tiny browser game built in pure HTML/JS (no libraries):</p>
-        <p><a <a href="/games/index.html">Play games →</a></p>
-      </section>
+        <p><a href="/games/index.html">Play games →</a></p>
 
+      </section>
+<section id="bucket-list" class="card hide">
+  <h2>Before I Die Bucket List</h2>
+  <p style="margin: 0 0 1.3rem; opacity: 0.85; font-size: 0.95rem;">
+    A few things I want to do in this lifetime – mix of engineering dreams, teaching missions and crazy adventures.
+  </p>
+
+  <div class="section-grid">
+    <article class="section-card float-soft">
+      <h3 style="margin-top: 0; font-size: 1.15rem;">🚀 Build a real robot product</h3>
+      <p style="margin: 0.35rem 0 0.2rem; font-size: 0.9rem; opacity: 0.9;">
+        Launch a robotics product that people actually use in their daily lives – not just a school project,
+        but something on the market.
+      </p>
+      <p style="margin: 0.2rem 0 0; font-size: 0.8rem; opacity: 0.7;">
+        Status: <strong style="color:#facc15;">In progress</strong> · So many prototypes already…
+      </p>
+    </article>
+
+    <article class="section-card float-soft">
+      <h3 style="margin-top: 0; font-size: 1.15rem;">🌍 Teach robotics worldwide</h3>
+      <p style="margin: 0.35rem 0 0.2rem; font-size: 0.9rem; opacity: 0.9;">
+        Run workshops in at least 10 countries, teaching kids robotics, coding and problem-solving –
+        especially in communities that don’t normally get that chance.
+      </p>
+      <p style="margin: 0.2rem 0 0; font-size: 0.8rem; opacity: 0.7;">
+        Status: <strong style="color:#38bdf8;">Dreaming & planning</strong>
+      </p>
+    </article>
+
+    <article class="section-card float-soft">
+      <h3 style="margin-top: 0; font-size: 1.15rem;">♟️ Create a chess + robotics academy</h3>
+      <p style="margin: 0.35rem 0 0.2rem; font-size: 0.9rem; opacity: 0.9;">
+        Build a physical or online academy that combines chess, robotics, and life skills –
+        strategy on the board, creativity with hardware, confidence in real life.
+      </p>
+      <p style="margin: 0.2rem 0 0; font-size: 0.8rem; opacity: 0.7;">
+        Status: <strong style="color:#f97316;">Vision</strong> · Collecting ideas and students.
+      </p>
+    </article>
+
+    <article class="section-card float-soft">
+      <h3 style="margin-top: 0; font-size: 1.15rem;">✈️ Travel & “teach for a day” challenge</h3>
+      <p style="margin: 0.35rem 0 0.2rem; font-size: 0.9rem; opacity: 0.9;">
+        Visit different cities around the world and teach at least one class in each place – robotics,
+        chess, English, whatever the students need.
+      </p>
+      <p style="margin: 0.2rem 0 0; font-size: 0.8rem; opacity: 0.7;">
+        Status: <strong style="color:#22c55e;">Will happen</strong> · Just a matter of time.
+      </p>
+    </article>
+  </div>
+</section>
       <!-- CONTACT -->
       <section id="contact" class="card hide">
         <h2>Contact</h2>
@@ -199,36 +546,68 @@
     </main>
 
     <aside class="portrait">
-      <img src="assets/portrait.jpg" alt="Portrait">
-      <div class="card" style="margin-top:12px">
-        <h3>Now</h3>
-        <p>Teaching robotics, mentoring new teachers, and writing “Robotics Journey”.</p>
-      </div>
-    </aside>
+  <img src="assets/portrait.jpg" alt="Portrait">
+  <div class="card" style="margin-top:12px">
+    <h3>Now</h3>
+    <p>Teaching robotics, mentoring new teachers, and writing “Robotics Journey”.</p>
   </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3>Fun facts</h3>
+    <ul style="margin:0; padding-left:1.1rem; font-size:0.9rem;">
+      <li>My students know: if it breaks, we just learned double.</li>
+      <li>I speak to robots nicely. They still ignore me sometimes.</li>
+      <li>Perfect evening = chess, soldering iron, and good coffee.</li>
+    </ul>
+  </div>
+</aside>
+
 
   <footer>
     <span>© <span id="year"></span> Mostafa Alabdallah</span>
     <span>Made with pure HTML/CSS/JS. Hosted free on GitHub Pages.</span>
   </footer>
 </div>
-
 <script>
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
+<script>
+  // Scroll reveal for .reveal sections
+  const reveals = document.querySelectorAll('.reveal');
+
+  function onScroll() {
+    const windowBottom = window.innerHeight * 0.9;
+    reveals.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < windowBottom) {
+        el.classList.add('is-visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', onScroll);
+  window.addEventListener('load', onScroll);
+</script>
+
+<script>
   // Tabs SPA
   const tabs = document.querySelectorAll('nav a');
   const sections = Array.from(document.querySelectorAll('main > section'));
+
   function show(hash){
     if(!hash) hash = '#home';
     tabs.forEach(a => a.classList.toggle('active', a.getAttribute('href')===hash));
     sections.forEach(s => s.classList.toggle('hide', '#'+s.id !== hash));
     history.replaceState(null, '', hash);
   }
+
   window.addEventListener('hashchange', () => show(location.hash));
   show(location.hash);
+</script>
 
+<script>
   // Parallax sparkle layer (subtle movement)
   const fx = document.getElementById('fx');
   window.addEventListener('scroll', ()=>{
